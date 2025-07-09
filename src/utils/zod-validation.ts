@@ -7,8 +7,6 @@ export async function validateZodSchema<T>(
 	try {
 		const parsed = await schema.parseAsync(data);
 
-		console.log('Validation successful:', parsed);
-
 		return { success: true, data: parsed };
 	} catch (err) {
 		if (err instanceof ZodError) {

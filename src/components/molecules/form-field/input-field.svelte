@@ -19,7 +19,7 @@
 	let currentFormErrors: Record<string, string> = {};
 
 	// Subscribe to form errors
-	$: if (formErrors) {
+	$: if ($formErrors) {
 		formErrors.subscribe((errors: Record<string, string>) => {
 			currentFormErrors = errors;
 		});
@@ -29,7 +29,7 @@
 		bindValue = useFormInitialValue<string>(name, bindValue);
 
 		// Update form data when bindValue changes
-		if (formData) {
+		if ($formData) {
 			formData.update((data: Record<string, unknown>) => ({
 				...data,
 				[name]: bindValue
@@ -38,7 +38,7 @@
 	});
 
 	// Update form data when bindValue changes
-	$: if (formData && name) {
+	$: if ($formData && name) {
 		formData.update((data: Record<string, unknown>) => ({
 			...data,
 			[name]: bindValue

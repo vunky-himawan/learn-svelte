@@ -1,16 +1,13 @@
 <script lang="ts">
+	import { formErrors } from '$stores/error';
+	import { formData } from '$stores/form';
 	import { validateZodSchema } from '$utils/zod-validation';
 	import { setContext } from 'svelte';
-	import { writable } from 'svelte/store';
 	import type { ZodSchema } from 'zod';
 
-	export let onSubmit: ((data: unknown) => void) | undefined = undefined;
+	export let onSubmit: ((data: Record<string, unknown>) => void) | undefined = undefined;
 	export let vertical = false;
-	export let initialData: Record<string, unknown> = {};
 	export let schema: ZodSchema | null = null;
-
-	const formData = writable(initialData);
-	const formErrors = writable<Record<string, string>>({});
 
 	setContext('formData', formData);
 	setContext('formErrors', formErrors);
