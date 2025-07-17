@@ -1,7 +1,7 @@
 <script>
-	import { useAuth } from '$hooks/use-auth';
-
-	useAuth();
+	import MainLayout from '$components/templates/layouts/main-layout.svelte';
 </script>
 
-<slot />
+<MainLayout>
+	<slot />
+</MainLayout>

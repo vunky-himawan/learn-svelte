@@ -7,4 +7,8 @@ export const useAuth = () => {
 	if (!access_token) {
 		goto('/auth/login', { replaceState: true });
 	}
+
+	return {
+		isAuthenticated: !!access_token
+	};
 };

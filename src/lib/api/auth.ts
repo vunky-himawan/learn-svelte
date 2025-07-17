@@ -26,7 +26,7 @@ export const login = async (email: string, password: string) => {
 					...prev,
 					login: {
 						title: errorResponse?.message || 'Login Error',
-						message: errorResponse?.errors || 'An error occurred during login. Please try again.'
+						message: errorResponse?.errors[0] || 'An error occurred during login. Please try again.'
 					}
 				};
 			});

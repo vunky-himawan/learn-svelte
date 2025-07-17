@@ -1,7 +1,10 @@
 <script lang="ts">
+	import { useAuth } from '$hooks/use-auth';
 	import { Button, Heading, P } from 'flowbite-svelte';
 	export let title: string = '';
 	export let description: string = '';
+
+	const { isAuthenticated } = useAuth();
 </script>
 
 <div class="flex h-screen w-screen items-center justify-center bg-gray-50">
@@ -11,7 +14,7 @@
 		</Heading>
 		<P class="text-gray-600">{description}</P>
 		<Button type="button">
-			<a href="/">Go Back Home</a>
+			<a href={isAuthenticated ? '/dashboard' : '/'}>Go Back Home</a>
 		</Button>
 	</div>
 </div>
